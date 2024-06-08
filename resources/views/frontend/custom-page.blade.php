@@ -25,7 +25,7 @@
       <ul class="d-flex container ul" style="overflow-x: auto">
           <li class="d-inline-block li"><a href="{{ url('/') }}">All</a></li>
         @foreach ($categories as $category)
-          <li class="d-inline-block li"><a href="{{ url($category->slug) }}">{{ $category->category_name }}</a></li>
+          <li class="d-inline-block li"><a href="{{ url("category/".$category->slug) }}">{{ $category->category_name }}</a></li>
         @endforeach         
       </ul>
     </div>

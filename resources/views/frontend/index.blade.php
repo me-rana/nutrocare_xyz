@@ -25,7 +25,7 @@
     <ul class="d-flex container ul" style="overflow-x: auto">
         <li class="d-inline-block li"><a href="{{ url('/') }}">All</a></li>
       @foreach ($categories as $category)
-        <li class="d-inline-block li"><a href="{{ url($category->slug) }}">{{ $category->category_name }}</a></li>
+        <li class="d-inline-block li"><a href="{{ url("category/".$category->slug) }}">{{ $category->category_name }}</a></li>
       @endforeach         
     </ul>
   </div>
@@ -35,13 +35,13 @@
     <div class="row">
      @foreach ($posts as $post)
       <div class="col-sm-12 col-6 col-md-4 pt-4">
-        <a href="{{ url($post->getcategory->slug.'/'.$post->slug) }}">
+        <a href="{{ url("post/".$post->getcategory->slug.'/'.$post->slug) }}">
         <div class="card">
-        <a href="{{ url($post->getcategory->slug.'/'.$post->slug) }}">
+        <a href="{{ url("post/".$post->getcategory->slug.'/'.$post->slug) }}">
             <img src="{{ asset($post->image) }}" style="height: 100%" class="responsive-image" alt="" srcset="">
         </a>
         <div class="container">
-          <a href="{{ url($post->getcategory->slug) }}">
+          <a href="{{ url("category/".$post->getcategory->slug) }}">
           <p style="color: rgb(0,0,0,0.5)" class="text-center text-uppercase pt-2">Beauty</p>
           </a>
           <h5 class="text-center text-dark">
@@ -64,13 +64,13 @@
     <div class="row">
      @foreach ($read_posts as $post)
       <div class="col-sm-12 col-6 col-md-4 pt-4">
-        <a href="{{ url($post->getcategory->slug.'/'.$post->slug) }}">
+        <a href="{{ url("post/".$post->getcategory->slug.'/'.$post->slug) }}">
         <div class="card">
-        <a href="{{ url($post->getcategory->slug.'/'.$post->slug) }}">
+        <a href="{{ url("post/".$post->getcategory->slug.'/'.$post->slug) }}">
             <img src="{{ asset($post->image) }}" style="height: 100%" class="responsive-image" alt="" srcset="">
         </a>
         <div class="container">
-          <a href="{{ url($post->getcategory->slug) }}">
+          <a href="{{ url("category/".$post->getcategory->slug) }}">
           <p style="color: rgb(0,0,0,0.5)" class="text-center text-uppercase pt-2">Beauty</p>
           </a>
           <h5 class="text-center text-dark">

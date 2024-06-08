@@ -25,7 +25,7 @@
       <ul class="d-flex container ul" style="overflow-x: auto">
           <li class="d-inline-block li"><a href="{{ url('/') }}">All</a></li>
         @foreach ($categories as $category)
-          <li class="d-inline-block li"><a href="{{ url($category->slug) }}">{{ $category->category_name }}</a></li>
+          <li class="d-inline-block li"><a href="{{ url("category/".$category->slug) }}">{{ $category->category_name }}</a></li>
         @endforeach         
       </ul>
     </div>
@@ -37,12 +37,12 @@
                 <h6 class="text-uppercase text-decoration-underline"><strong>Recent Posts</strong></h6>
                 @foreach ($recent_posts as $post)
                 <div class="d-flex align-items-center" style="width: 90%">
-                  <a href="{{ url($post->getcategory->slug."/".$post->slug) }}">
+                  <a href="{{ url("post/".$post->getcategory->slug."/".$post->slug) }}">
                     <img src="{{ asset($post->image) }}" alt="" height="50px" width="70px" class="d-inline-block">
                   </a>
                   <div class="d-inline-block ps-2">
-                    <p style="color: rgb(0,0,0,0.5)"><i class="fa-solid fa-calendar-days"></i> {{ date_format($post->created_at,"M d, Y") }} <span class="ps-2"><i class="fa-solid fa-icons"></i> {{ $post->getcategory->category_name }}</span></p>
-                    <a href="{{ url($post->getcategory->slug."/".$post->slug) }}" class="link">
+                    <p style="color: rgb(0,0,0)"><i class="fa-solid fa-calendar-days"></i> {{ date_format($post->created_at,"M d, Y") }} <a class="link" href="{{ url("category/".$category->slug) }}"> <span class="ps-2"><i class="fa-solid fa-icons"></i> {{ $post->getcategory->category_name }}</span></a></p>
+                    <a href="{{ url("post/".$post->getcategory->slug."/".$post->slug) }}" class="link">
                     <h6 style="margin-top: -15px">{{ $post->title }}</h6>
                     </a>
                   </div>
@@ -53,12 +53,12 @@
                 <h6 class="text-uppercase text-decoration-underline pt-3"><strong>Related Posts</strong></h6>
                 @foreach ($related_posts as $post)
                 <div class="d-flex align-items-center" style="width: 90%">
-                  <a href="{{ url($post->getcategory->slug."/".$post->slug) }}">
+                  <a href="{{ url("post/".$post->getcategory->slug."/".$post->slug) }}">
                     <img src="{{ asset($post->image) }}" alt="" height="50px" width="70px" class="d-inline-block">
                   </a>
                   <div class="d-inline-block ps-2">
-                    <p style="color: rgb(0,0,0,0.5)"><i class="fa-solid fa-calendar-days"></i> {{ date_format($post->created_at,"M d, Y") }} <span class="ps-2"><i class="fa-solid fa-icons"></i> {{ $post->getcategory->category_name }}</span></p>
-                    <a href="{{ url($post->getcategory->slug."/".$post->slug) }}" class="link">
+                    <p style="color: rgb(0,0,0)"><i class="fa-solid fa-calendar-days"></i> {{ date_format($post->created_at,"M d, Y") }} <a class="link" href="{{ url("category/".$category->slug) }}"> <span class="ps-2"><i class="fa-solid fa-icons"></i> {{ $post->getcategory->category_name }}</span></a></p>
+                    <a href="{{ url("post/".$post->getcategory->slug."/".$post->slug) }}" class="link">
                     <h6 style="margin-top: -15px">{{ $post->title }}</h6>
                     </a>
                   </div>

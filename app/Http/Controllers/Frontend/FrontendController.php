@@ -32,7 +32,14 @@ class FrontendController extends Controller
     }
 
     public function category($category){
-        $category_id = Category::where(['status' => 1, 'slug' => $category])->first()->id; 
+        $category = Category::where(['status' => 1, 'slug' => $category])->first(); 
+        if($category){
+            $posts = Blog::where(['status' => 1, 'category' => $category->id])->get();
+        }
+        else{
+            $posts = Blog::where(['status' => 1])->get();
+        }
+
         if(Session::get('post')){
             $readposts = Blog::where(['status' => 1])->whereIn('slug',Session::get('post'))->get();
         }
@@ -43,7 +50,7 @@ class FrontendController extends Controller
             [
                 'banners' => Banner::where('banner_category_id',1)->get(),
                 'categories' => Category::where('status',1)->get(),
-                'posts' => Blog::where(['status' => 1, 'category' => $category_id])->get(),
+                'posts' => $posts ?? '',
                 'pages' => CustomPage::where('status',1)->get(),
                 'read_posts' => $readposts ?? '',
             ]
@@ -62,7 +69,7 @@ class FrontendController extends Controller
     }
 
 
-    public function post($category,$post){
+    public function post($category, $post){
         $category_id = Category::where(['status' => 1, 'slug' => $category])->first()->id; 
         $current_session = [];
         $old_sessions = Session::get('post',[]);

@@ -29,10 +29,13 @@ Route::get('/redirects',[RedirectController::class,'controlPanel'])->name('Redir
 Route::get('/logout', [RedirectController::class,'logout']);
 
 Route::middleware(['hasaccess','filterip'])->group(function () {
+    // Route::get('/',function(){
+    //     return view('welcome');
+    // });
     Route::get('/', [FrontendController::class, 'index'])->name('Home');
-    Route::get('/{category}', [FrontendController::class, 'category'])->name('Category');
-    Route::get('/page/{slug}', [FrontendController::class, 'page'])->name('Custom Page');
-    Route::get('/{category}/{post}', [FrontendController::class, 'post'])->name('Custom Page');
+    Route::get('/category/{category}', [FrontendController::class, 'category'])->name('Category');
+    Route::get('/page/{slug}', [FrontendController::class, 'page'])->name('Page');
+    Route::get('/post/{category}/{post}', [FrontendController::class, 'post'])->name('Category Page');
 });
 
 
